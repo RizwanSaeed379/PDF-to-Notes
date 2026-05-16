@@ -46,8 +46,9 @@ export default function Home() {
 
       await complete(text);
     } catch (err) {
-      console.error(err);
-      setError(`Extraction Error: ${err.message}`);
+      console.error('[Extraction Error]', err);
+      const errorMessage = err.message || 'An unexpected error occurred while reading the PDF.';
+      setError(`Extraction Error: ${errorMessage}`);
       setIsExtracting(false);
     }
   }, [complete, setCompletion]);
